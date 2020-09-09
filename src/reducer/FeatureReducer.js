@@ -1,4 +1,13 @@
-export const initialFeatures = {
+export const initialState = {
+
+    additionalPrice: 0,
+    car: {
+      price: 26395,
+      name: '2019 Ford Mustang',
+      image:
+        'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
+      features: []
+    },
 
     additionalFeatures: [
         { id: 1, name: 'V-6 engine', price: 1500 },
@@ -8,33 +17,33 @@ export const initialFeatures = {
       ]
 }
 
-export const initialState ={
-    additionalPrice: 0,
-    car: {
-      price: 26395,
-      name: '2019 Ford Mustang',
-      image:
-        'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-      features: []
-    },
-}
-
-export const reducer = (state = initialFeatures, action) => {
+export const reducer = (state = initialState, action) => {
     console.log(state)
     console.log(action)
     switch(action.type){
         case 'ADD_FEATURE':
             return{
                 ...state,
-               additionalFeatures: [...state.additionalFeatures, action.payload]
-                    
+               additionalPrice: (state.additionalPrice + action.payload.price),
+                    car:{
+                    ...state.car,
+                    features:
+                    [...state.additionalFeatures, action.payload]
+                    }
             }
         
     
     case 'REMOVE_FEATURE':
             return{
                 ...state,
-                additionalFeatures: state.additionalFeatures.filter(feature => !feature.selected)
+                car:{
+                    ...state.car,
+                    features: [...state.car.features.filter((feature) => {
+                        if(feature.selected === action.payload.id)
+                        return null
+                    })
+                    ]
+                }
             }
 
         default:
