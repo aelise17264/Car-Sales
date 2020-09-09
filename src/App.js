@@ -9,7 +9,7 @@ import {addFeature, removeFeature} from './reducer/Actions'
 
 const App = (props) => {
 const {state, addFeature, removeFeature} = props
-console.log(removeFeature)
+ console.log(props.removeFeature)
 // console.log(state)
   return (
     <div className="boxes">
