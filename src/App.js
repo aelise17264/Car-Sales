@@ -1,15 +1,14 @@
-import React, {useReducer} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import {initialState, reducer} from './reducer/FeatureReducer';
 import {addFeature, removeFeature} from './reducer/Actions'
 
 const App = (props) => {
 const {state, addFeature, removeFeature} = props
- console.log(props.removeFeature)
+//  console.log(props.removeFeature)
 // console.log(state)
   return (
     <div className="boxes">
